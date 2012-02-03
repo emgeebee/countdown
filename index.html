@@ -28,25 +28,29 @@
 
 		var error = 0;
 		var errorString = "";
-		var URLdateTime = document.URL.split('#');
-		if(!URLdateTime[1]){
-			errorString = 'Please append a date and time to the URL, using the format http://www.d-day.in#yyyy-mm-dd-hh-mm-ss';
-				error = 1;
-		} else {
-			var dateTimeArray = URLdateTime[1].split('-');
-			if(!dateTimeArray[0] || !dateTimeArray[1] || !dateTimeArray[2] || !dateTimeArray[3] || !dateTimeArray[4] || !dateTimeArray[5]){
-				errorString = 'This date is not valid. Please append a date and time to the URL, using the format http://www.d-day.in#yyyy-mm-dd-hh-mm-ss';
-				error = 1;
+		var endDate;
+
+		var prepareDate = function(){
+			var URLdateTime = document.URL.split('#');
+			if(!URLdateTime[1]){
+				errorString = 'Please append a date and time to the URL, using the format http://www.d-day.in#yyyy-mm-dd-hh-mm-ss';
+					error = 1;
 			} else {
-				var endDateYear = dateTimeArray[0];
-				var endDateMonth = parseInt(dateTimeArray[1]) - 1;
-				var endDateDay = dateTimeArray[2];
-				var endDateHour = dateTimeArray[3];
-				var endDateMin = dateTimeArray[4];
-				var endDateSec = dateTimeArray[5];
+				var dateTimeArray = URLdateTime[1].split('-');
+				if(checkValidYear(dateTimeArray[0]) && checkValidMonth(dateTimeArray[1]) && checkValidDay(dateTimeArray[2]) && checkValidHour(dateTimeArray[3]) && checkValidMinute(dateTimeArray[4]) && checkValidSecond(dateTimeArray[5])){
+					errorString = 'This date is not valid. Please append a date and time to the URL, using the format http://www.d-day.in#yyyy-mm-dd-hh-mm-ss';
+					error = 1;
+				} else {
+					var endDateYear = dateTimeArray[0];
+					var endDateMonth = parseInt(dateTimeArray[1]) - 1;
+					var endDateDay = dateTimeArray[2];
+					var endDateHour = dateTimeArray[3];
+					var endDateMin = dateTimeArray[4];
+					var endDateSec = dateTimeArray[5];
+				}
 			}
+			endDate = new Date(endDateYear,endDateMonth,endDateDay,endDateHour,endDateMin,endDateSec);
 		}
-		var endDate = new Date(endDateYear,endDateMonth,endDateDay,endDateHour,endDateMin,endDateSec);
 
 		var setTimeRemaining = function(){
 			var htmlString = "";
@@ -82,6 +86,55 @@
 			}
 		}
 
+		var checkValidSecond = function(sec){
+			return checkValidMinute(sec);
+		}
+
+		var checkValidMinute = function(min){
+			var minNumber = parseInt(min);
+			if(!minNumber || minNumber > 60 || minNumber < 0 || isNaN(minNumber)){
+				console.log('bad min/sec');
+				return false;
+			}
+			return true
+		}
+
+		var checkValidHour = function(hour){
+			var hourNumber = parseInt(hour);
+			if(!hourNumber || hourNumber > 24 || hourNumber < 0 || isNaN(hourNumber)){
+				console.log('bad hour');
+				return false;
+			}
+			return true
+		}
+
+		var checkValidDay = function(day){
+			var dayNumber = parseInt(day);
+			if(!dayNumber || dayNumber > 31 || dayNumber < 0 || isNaN(dayNumber)){
+				console.log('bad day');
+				return false;
+			}
+			return true
+		}
+
+		var checkValidMonth = function(month){
+			var monthNumber = parseInt(month);
+			if(!monthNumber || monthNumber > 12 || monthNumber < 0 || isNaN(monthNumber)){
+				console.log('bad month');
+				return false;
+			}
+			return true
+		}
+
+		var checkValidYear = function(year){
+			var yearNumber = parseInt(year);
+			if(!yearNumber || isNaN(yearNumber)){
+				console.log('bad year');
+				return false;
+			}
+			return true
+		}
+
 		var formatDigits = function(number, digits){
 			var num = number + "";
 			while (num.length < digits) {
@@ -90,6 +143,7 @@
 			return num;
 		}
 
+		prepareDate();
 		setTimeout("setTimeRemaining()", 1);
 	</script>
 </html>
