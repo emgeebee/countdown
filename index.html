@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Countdown</title>
+<title>D-Day.in, your personal countdown timer</title>
 <style type="text/css">
 body{
 	margin: auto;
@@ -29,12 +29,12 @@ var error = 0;
 var errorString = "";
 var URLdateTime = document.URL.split('#');
 if(!URLdateTime[1]){
-	errorString = 'Please enter a date and time in the URL, using the format yyyy-mm-dd-hh-mm-ss';
+	errorString = 'Please append a date and time to the URL, using the format http://www.d-day.com#yyyy-mm-dd-hh-mm-ss';
 		error = 1;
 } else {
 	var dateTimeArray = URLdateTime[1].split('-');
 	if(!dateTimeArray[0] || !dateTimeArray[1] || !dateTimeArray[2] || !dateTimeArray[3] || !dateTimeArray[4] || !dateTimeArray[5]){
-		errorString = 'Please enter a valid date and time in the URL, using the format yyyy-mm-dd-hh-mm-ss';
+		errorString = 'This date is not valid. Please append a date and time to the URL, using the format http://www.d-day.com#yyyy-mm-dd-hh-mm-ss';
 		error = 1;
 	} else {
 		var endDateYear = dateTimeArray[0];
