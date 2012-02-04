@@ -37,7 +37,7 @@
 	
 ?>
 			<script>
-				var savedEvent = [<? echo "'".$row[1]."'" ?>, <? echo "'".$row[2]."'" ?>];
+				var savedEvent = [<? echo "'".addslashes($row[1])."'" ?>, <? echo "'".$row[2]."'" ?>];
 				console.log(savedEvent);
 			</script>
 <? 
@@ -57,7 +57,7 @@
 	</div>
 	<div id="main" role="main" class="hiddenForm">
 
-		<form action="/~matrulesok2/d-day/collect.php" method="post">
+		<form action="/collect.php" method="post">
 			<p>Event name:</p>
 			<p><input class="textField" type="text" name="name" /></p>
 			<p>Date:</p>

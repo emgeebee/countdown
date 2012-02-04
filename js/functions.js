@@ -1,6 +1,6 @@
 var customEvent = "D-Day in ";
-var noDateErrorMessage = 'Please append a date and time to the URL, using the format http://www.d-day.in/#yyyy-mm-dd-hh-mm-ss';
-var wrongDateFormat =  'This date is not valid. Please append a date and time to the URL, using the format http://www.d-day.in/#yyyy-mm-dd-hh-mm-ss';
+var noDateErrorMessage = 'Please append a date and time to the URL, using the format http://www.d-day.in/#yyyy-mm-dd-hh-mm-ss or create a custom event';
+var wrongDateFormat =  'This date is not valid. Please append a date and time to the URL, using the format http://www.d-day.in/#yyyy-mm-dd-hh-mm-ss or create a custom event';
 
 var error = 0;
 var errorString = "";
@@ -49,10 +49,10 @@ var setTimeRemaining = function(){
 	} else {
 		if(daysLeft != 0){
 			htmlString = customEvent + daysLeft + " days, and " + hoursLeft + ':' + minsLeft + ':' + secondsLeft + ':' + milisecondsLeft;
-			titleString = customEvent + daysLeft + " days, " + hoursLeft + ':' + minsLeft + ':' + secondsLeft;
+			titleString = daysLeft + " days, " + hoursLeft + ':' + minsLeft + ':' + secondsLeft;
 		} else {
 			htmlString = customEvent + hoursLeft + ':' + minsLeft + ':' + secondsLeft + ':' + milisecondsLeft;
-			titleString = customEvent + hoursLeft + ':' + minsLeft + ':' + secondsLeft;
+			titleString = hoursLeft + ':' + minsLeft + ':' + secondsLeft;
 		}
 		document.title = titleString;
 	}
@@ -67,7 +67,7 @@ var checkValidSecond = function(sec){
 }
 var checkValidMinute = function(min){
 	var minNumber = parseInt(min);
-	if(!minNumber || minNumber > 60 || minNumber < 0 || isNaN(minNumber)){
+	if(minNumber > 60 || minNumber < 0 || isNaN(minNumber)){
 		console.log('bad min/sec');
 		return false;
 	}
