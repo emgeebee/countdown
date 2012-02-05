@@ -274,8 +274,13 @@ table { border-collapse: collapse; border-spacing: 0; }
   h2, h3{ page-break-after: avoid; }
 }
 
-.hiddenForm{
+#datepicker{
 	display: none;
+}
+
+.newdate{
+	width: 430px;
+	margin-left: 10px;
 }
 
 #clock{
@@ -311,4 +316,8 @@ table { border-collapse: collapse; border-spacing: 0; }
 #datepicker{
 	background-color: #41383C;
 	border: none;
+}
+.dateEntry{
+	text-decoration: underline;
+	font-size: 14pt;
 }

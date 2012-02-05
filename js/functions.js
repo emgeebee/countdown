@@ -5,7 +5,6 @@ var wrongDateFormat =  'This date is not valid. Please append a date and time to
 var error = 0;
 var errorString = "";
 var endDate;
-var flyoutCounter = 0;
 var savedEvent = 0;
 
 var prepareDate = function(URLdateTime){
@@ -118,24 +117,9 @@ var formatDigits = function(number, digits){
 	return num;
 }
 
-var animateForm = function() {
-	if(flyoutCounter > 0){
-		
+var validateForm = function(){
+	if($('#dateName').val() == "" || $('#datepicker').val() == ""){
+		alert('Please enter data for all fields.');
+		return false
 	}
-	$('.hiddenForm').animate(
-		{
-			height: 'toggle'
-		}, 
-		1000, 
-		function() {
-			if(flyoutCounter < 1){
-				$("#datepicker").AnyTime_picker({format: "%Y-%m-%d-%H-%i-%s",
-					formatUtcOffset: "%: (%@)",
-					hideInput: true,
-					placement: "inline"}
-				);
-			}
-			flyoutCounter++;
-		}
-	)
 }

@@ -9,4 +9,3 @@ if(document.URL.split('#')[1]){
 }
 prepareDate(URLdateTime);
 setTimeout("setTimeRemaining()", 1);
-$("#newDate").click(animateForm);

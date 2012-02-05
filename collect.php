@@ -5,8 +5,8 @@
 //echo $sql;
 	if (!mysql_query($sql,$con))
 	{
-		//echo('Error: ' . mysql_error());
+		echo('Error: ' . mysql_error());
 	}
-	header( 'Location: http://d-day.in/?'.mysql_insert_id());
+	header( 'Location: ./?'.mysql_insert_id());
 	mysql_close($con);
 ?>
