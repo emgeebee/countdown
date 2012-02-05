@@ -1,6 +1,6 @@
 <script>
 
-	var _gaq=[['_setAccount','UA-28963119-1'],['_trackPageview']]; // Change UA-XXXXX-X to be your site's ID
+	var _gaq=[['_setAccount','UA-28963119-1'],['_trackPageview']];
 
 	(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
 

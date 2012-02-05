@@ -4,7 +4,7 @@
 <div id="container" class='newdate'>
 	<h1>New Date</h1>
 	<div>
-		<p>Create a new custom date-time to count down to. This will then be available on a custom URL, such as d-day.in/my event title</p>
+		<p>Create a new custom date-time to count down to. This will then be available on a custom URL</p>
 	</div>
 	<form action="./collect.php" method="post">
 		<p><span class='dateEntry'>Event name</span> (This has to be unique - please think imagineatively):</p>

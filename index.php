@@ -2,7 +2,7 @@
 	include 'header.php';
 ?>
 <div id="container">
-	<div id="clock"></div>
+	<div id="event"><span id="eventText"></span><span id="clock"></span></div>
 	<div id="newDate">
 		<a href="./newdate.php">New Custom Date</a>
 	</div>

@@ -25,6 +25,7 @@ var prepareDate = function(URLdateTime){
 			error = 1;}
 	}
 	endDate = new Date(endDateYear,endDateMonth,endDateDay,endDateHour,endDateMin,endDateSec);
+	$('#eventText').text(customEvent);
 }
 
 var setTimeRemaining = function(){
@@ -47,15 +48,15 @@ var setTimeRemaining = function(){
 		htmlString = errorString;
 	} else {
 		if(daysLeft != 0){
-			htmlString = customEvent + daysLeft + " days, and " + hoursLeft + ':' + minsLeft + ':' + secondsLeft + ':' + milisecondsLeft;
+			htmlString =  daysLeft + " days, and " + hoursLeft + ':' + minsLeft + ':' + secondsLeft + ':' + milisecondsLeft;
 			titleString = daysLeft + " days, " + hoursLeft + ':' + minsLeft + ':' + secondsLeft;
 		} else {
-			htmlString = customEvent + hoursLeft + ':' + minsLeft + ':' + secondsLeft + ':' + milisecondsLeft;
+			htmlString =  hoursLeft + ':' + minsLeft + ':' + secondsLeft + ':' + milisecondsLeft;
 			titleString = hoursLeft + ':' + minsLeft + ':' + secondsLeft;
 		}
 		document.title = titleString;
 	}
-	document.getElementById('clock').innerHTML = htmlString;
+	$('#clock').text(htmlString);
 	if(error == 0){
 		setTimeout("setTimeRemaining()", 1);
 	}
