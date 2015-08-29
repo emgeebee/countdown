@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteRule ^([0-9]+)$ /d-day/index.php?$1 [L]
+
+ErrorDocument 404 /d-day/404.html

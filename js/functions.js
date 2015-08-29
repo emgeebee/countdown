@@ -1,6 +1,6 @@
 var customEvent = "D-Day in ";
-var noDateErrorMessage = 'Please append a date and time to the URL, using the format http://www.d-day.in/#yyyy-mm-dd-hh-mm-ss or create a custom event';
-var wrongDateFormat =  'This date is not valid. Please append a date and time to the URL, using the format http://www.d-day.in/#yyyy-mm-dd-hh-mm-ss or create a custom event';
+var noDateErrorMessage = 'Please append a date and time to the URL, using the format http://www.d-day.in/#yyyy-mm-dd-hh-mm-ss or create a custom date';
+var wrongDateFormat =  'This date is not valid. Please append a date and time to the URL, using the format http://www.d-day.in/#yyyy-mm-dd-hh-mm-ss or create a custom date';
 
 var error = 0;
 var errorString = "";
@@ -8,7 +8,7 @@ var endDate;
 var savedEvent = 0;
 
 var prepareDate = function(URLdateTime){
-	if(!URLdateTime[1]){
+    if(!URLdateTime || !URLdateTime[1]){
 		errorString = noDateErrorMessage;
 			error = 1;
 	} else {
@@ -25,7 +25,9 @@ var prepareDate = function(URLdateTime){
 			error = 1;}
 	}
 	endDate = new Date(endDateYear,endDateMonth,endDateDay,endDateHour,endDateMin,endDateSec);
-	$('#eventText').text(customEvent);
+    if(error == 0){
+        $('#eventText').text(customEvent);
+    }
 }
 
 var setTimeRemaining = function(){

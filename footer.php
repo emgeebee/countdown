@@ -4,12 +4,11 @@
 <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
 <script>var savedEvent = 0;</script>
 <?php
-	$requestID = array_pop(explode('?', $_SERVER["REQUEST_URI"]));
-echo '<script>console.log("'.intval($requestID).'");</script>';
-	if(is_int(intval($requestID[0]))){
+	$requestID = array_pop(explode('/', $_SERVER["REQUEST_URI"]));//echo '<script>console.log("'.intval($requestID).'");</script>';
+	if(is_int(intval($requestID)) && $requestID){
 		$sql = 'SELECT * FROM `counters` WHERE `Key` = "'. $requestID . '"';
 //echo "<script>console.log('".$sql."');</script>";
-echo "<script>console.log('".$result."');</script>";
+//echo "<script>console.log('".$result."');</script>";
 		$result = mysql_query($sql,$con);
 		if($result){
 			$row = mysql_fetch_row($result);	

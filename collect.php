@@ -7,6 +7,6 @@
 	{
 		echo('Error: ' . mysql_error());
 	}
-	header( 'Location: ./?'.mysql_insert_id());
+	header( 'Location: ./'.mysql_insert_id());
 	mysql_close($con);
 ?>
